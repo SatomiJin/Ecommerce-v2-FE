@@ -45,3 +45,13 @@ export const deleteProduct = async (productName, access_token) => {
   });
   return res.data;
 };
+
+export const updateProduct = async (data, access_token) => {
+  console.log("access_token", access_token);
+  const res = await axios.put(`${process.env.REACT_APP_API_KEY}product/update-product`, data, {
+    headers: {
+      token: `Bearer ${access_token}`,
+    },
+  });
+  return res.data;
+};

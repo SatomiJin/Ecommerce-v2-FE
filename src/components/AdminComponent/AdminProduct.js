@@ -8,10 +8,14 @@ import CreateProductModal from "./ModalProduct/CreateProductModal";
 import Loading from "../../components/Loading/Loading";
 import "./AdminProduct.scss";
 import DeleteProductModal from "./ModalProduct/DeleteProductModal";
+import UpdateProductModal from "./ModalProduct/UpdateProductModal";
 function AdminProduct() {
   let user = useSelector((state) => state.user);
   let [isCreateProduct, setIsCreateProduct] = useState(false);
   let [isDeleteProduct, setIsDeleteProduct] = useState(false);
+  let [isUpdateProduct, setIsUpdateProduct] = useState(false);
+
+  let [dataUpdate, setDataUpdate] = useState({});
   let [productName, setProductName] = useState("");
   let [dataGetProduct, setDataGetProduct] = useState({
     search: "",
@@ -39,6 +43,9 @@ function AdminProduct() {
   const handleDeleteProduct = (status) => {
     setIsDeleteProduct(status);
   };
+  const handleUpdateProduct = (status) => {
+    setIsUpdateProduct(status);
+  };
   //useEffect
   useEffect(() => {
     queryProduct.refetch();
@@ -52,7 +59,12 @@ function AdminProduct() {
       queryProduct.refetch();
       setIsDeleteProduct(false);
     }
-  }, [isCreateProduct, isDeleteProduct]);
+
+    if (isUpdateProduct === true) {
+      queryProduct.refetch();
+      setIsUpdateProduct(false);
+    }
+  }, [isCreateProduct, isDeleteProduct, isUpdateProduct]);
   return (
     <>
       <div className="admin-product-container p-3">
@@ -97,7 +109,13 @@ function AdminProduct() {
                           >
                             <i className="fa-solid fa-trash-can"></i>
                           </button>
-                          <button type="button" className="btn btn-info">
+                          <button
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateProduct"
+                            onClick={() => setDataUpdate(item)}
+                            className="btn btn-info"
+                          >
                             <i className="fa-solid fa-pen-to-square"></i>
                           </button>
                         </div>
@@ -120,6 +138,7 @@ function AdminProduct() {
       <div className="admin-product-modal">
         <CreateProductModal handleCreateProduct={handleCreateProduct} />
         <DeleteProductModal productName={productName} user={user} handleDeleteProduct={handleDeleteProduct} />
+        <UpdateProductModal handleUpdateProduct={handleUpdateProduct} user={user} dataUpdate={dataUpdate} />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
@@ -148,15 +148,6 @@ function CreateProductModal(props) {
                 </div>
                 <div className="form-group col-6">
                   <label htmlFor="type">Loại sản phẩm:</label>
-                  {/* <input
-                    required
-                    type="text"
-                    id="type"
-                    value={productDetail.type}
-                    onChange={(e) => handleOnChange(e)}
-                    className="form-control"
-                    name="type"
-                    /> */}
                   <Select
                     name="type"
                     className="select-control"
