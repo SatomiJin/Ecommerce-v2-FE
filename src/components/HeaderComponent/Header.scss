@@ -1,0 +1,41 @@
+.header-container {
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    height: 5rem;
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+    border-bottom: 1px solid #000;
+    z-index: 100;
+    .header-wrapper {
+        padding: 1rem;
+        .header-content {
+            .header-logo {
+                display: flex;
+                justify-content: center;
+             
+                    .logo-page {
+                        background-image: url('../../assets/images/koutajin-high-resolution-logo-removebg-previewc.png');
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        width: 70%;
+                    }
+                
+
+            }
+
+            .header-search {
+                justify-content: center;
+                align-items: center;
+               
+            }
+
+            .header-user {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

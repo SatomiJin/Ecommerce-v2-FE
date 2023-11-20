@@ -1,0 +1,108 @@
+.sign-in-container {
+    height: 100vh;
+    background-image: url('../../assets/images/background/background-1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .sign-in-wrapper {
+        height: inherit;
+        position: relative;
+
+        .sign-in-content {
+            background-color: rgba(255, 255, 255, 0.7);
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            width: 30rem;
+            border-radius: 1rem;
+            border: 1px solid black;
+
+            .title {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-top: 2rem;
+            }
+
+            form {
+                padding: 2rem;
+                display: flex;
+                row-gap: 1rem;
+
+                .password-group {
+                    position: relative;
+                    .hide-show-password {
+                        position: absolute;
+                        top: 2rem;
+                        right: 1.5rem;
+                    }
+                }
+
+                .other-options {
+                    display: flex;
+                    position: relative;
+
+                    .sign-up-text {
+                        font-size: 1rem;
+
+                        .link-to-sign-up {
+                            //  font-size: 1rem;
+                            text-decoration: none;
+                            color: #362FD9;
+                            transition: 0.5s;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .forgot-password-text {
+                        position: absolute;
+                        right: 1rem;
+                        text-decoration: none;
+                        color: #362FD9;
+                        transition: 0.5s;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .sign-in-with-social {
+                    .others-sign-in {
+                        text-transform: uppercase;
+                        font-weight: 500;
+                    }
+
+                    .others-sign-in-social {
+                        margin-top: 1rem;
+
+                        .fa-facebook {
+                            margin-right: 1rem;
+                            font-size: 3rem;
+                            transition: 0.5s;
+
+                            &:hover {
+                                color: #4267B2;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .fa-google-plus {
+                            font-size: 3rem;
+                            transition: 0.5s;
+
+                            &:hover {
+                                color: #DB4437;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

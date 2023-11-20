@@ -1,0 +1,96 @@
+.profile-user-container {
+    min-height: 86.8vh;
+    position: relative;
+    padding-top: 1rem;
+    background-image: url("../../assets/images/background/background-1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .profile-user-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    .profile-user-info {
+        position: absolute;
+        left: 4%;
+        top: 30%;
+        width: 30rem;
+        min-height: 15rem;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 1rem;
+        display: flex;
+        .profile-user-info-left{
+            position: relative;
+            .profile-user-info-left-avatar{
+                background-image: url('../../assets/images/User/default-user-image.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 50%;
+                height: 10rem;
+                width: 10rem;
+                margin-bottom: 1rem;
+            }
+            .btn-danger{
+                position: absolute;
+                left: 20%;
+                text-align: justify;
+            }
+        }
+        .profile-user-info-right{
+            display: flex;
+            flex-wrap: wrap;
+            font-weight: 600;
+            div{
+                min-width: 12rem;
+            }
+        }
+    }
+
+    .profile-user-content {
+        position: absolute;
+        font-size: 1.1rem;
+        color: #000;
+        font-weight: 500;
+        padding: 2rem;
+        top: 55%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        width: 40rem;
+        min-height: 25rem;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 1rem;
+        border: 1px solid black;
+
+        .form-group {
+            position: relative;
+            margin: 0.5rem 0;
+
+            .profile-user-preview-image {
+                position: absolute;
+                border-radius: 50%;
+                height: 4rem;
+                right: 10%;
+                top: 25%;
+                width: 4rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        .profile-user-button {
+            .btn-outline-success {
+                transition: all 0.3s;
+
+                &:hover {
+                    background-color: #8EC5FC !important;
+                    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%) !important;
+                }
+            }
+        }
+    }
+}

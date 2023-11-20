@@ -1,0 +1,48 @@
+.admin-user-container {
+    padding-top: 2rem;
+
+    .admin-user-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .admin-user-add-btn {
+       margin: 2rem;
+        button {
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            &:hover{
+                opacity: 0.7;
+                color: rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+
+    .admin-user-table {
+        .table-hover {
+
+            tbody {
+                tr {
+                    td {
+                        word-wrap: break-word;
+                        text-overflow: ellipsis;
+
+                        .admin-user-table-btn {
+                            display: flex;
+                            gap: 0.5rem;
+
+                            button {
+                                width: 3rem;
+                                height: 3rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

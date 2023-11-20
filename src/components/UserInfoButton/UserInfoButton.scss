@@ -1,0 +1,20 @@
+.user-info-button-container {
+
+    .user-info-button-content {
+        display: flex;
+        gap: 1rem;
+    }
+    .user-info-button-profile{
+        display: flex;
+        align-items: center;
+        .user-info-button-profile-image{
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
+

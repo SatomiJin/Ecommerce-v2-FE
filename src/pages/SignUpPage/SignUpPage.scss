@@ -1,0 +1,57 @@
+.sign-up-page-container {
+    min-height: 100vh;
+    background-image: url('../../assets/images/background/background-1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .sign-up-page-wrapper {
+        font-size: 1.1rem;
+        font-weight: 500;
+        border: 1px solid black;
+        min-height: 100vh;
+
+        .sign-up-page-form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -40%);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            width: 50rem;
+            border-radius: 1rem;
+
+            .row {
+                row-gap: 1rem;
+
+                input {
+                    border: 1px solid #ccc;
+                }
+            }
+
+            .sign-up-page-action {
+                .btn-sign-up {
+                    border: 1px solid black;
+                    width: 7rem;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    transition: 0, 5s;
+                    outline: none;
+                    &:hover {
+                        color: #fff;
+                        border: none;
+                        background-image: linear-gradient(58.2deg, rgba(40, 91, 212, 0.73) -3%, rgba(171, 53, 163, 0.45) 49.3%, rgba(255, 204, 112, 0.37) 97.7%);
+
+                    }
+                }
+            }
+
+            .title {
+
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 600;
+
+            }
+        }
+    }
+}

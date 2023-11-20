@@ -1,0 +1,21 @@
+.input-search-container{
+   .input-group{
+        border: 1px solid #000 !important;
+        border-radius: 1rem;
+        height: 3rem;
+        input{
+         border-radius: 1rem;
+         background-color: #fff !important;
+        }
+        button{
+         height: 3rem;
+         border-radius: 1rem;
+         outline: none !important;
+         border: none !important;
+         transition: 0.5s;
+          &:hover{
+            background-color: rgba(255, 2555, 255, 0.5);
+          }
+        }
+   }
+}
