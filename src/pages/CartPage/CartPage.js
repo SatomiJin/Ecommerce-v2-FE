@@ -49,7 +49,34 @@ function CartPage() {
             </div>
           </div>
         </div>
-        <div className="cart-page-body-right my-3 col-3"></div>
+        <div className="cart-page-body-right my-3 col-3">
+          <div className="cart-page-body-right-top row">
+            <div className="title">Giao tới</div>
+            <div className="user-info ">
+              <div className="name text-center">Đồng Hữu Trọng</div>
+              <div className="phone text-center">0349186599</div>
+            </div>
+            <div className="address">
+              <span>Nhà</span>
+              Tổ 8, Khu Phố Phú Xuân,Phường Phú Thịnh,Thị Xã Bình Long,Tỉnh Bình Phước, Phường Phú Thịnh, Thị xã Bình
+              Long, Bình Phước
+            </div>
+          </div>
+          <div className="cart-page-body-right-middle row my-3">
+            <div className="cart-page-body-right-middle-price">
+              <span className="price-text">Tạm tính</span>
+              <span className="price-value">{utils.formattedPrice(200000)}</span>
+            </div>
+            <div className="cart-page-body-right-middle-total">
+              <span className="total-text">Tổng tiền</span>
+              <span className="total-value">{utils.formattedPrice(200000)}</span>
+              <span className="total-value-noted">(Đã bao gồm VAT nếu có)</span>
+            </div>
+          </div>
+          <div className="cart-page-body-right-bottom row">
+            <button className="btn-buy">Mua hàng</button>
+          </div>
+        </div>
       </div>
     </div>
   );
