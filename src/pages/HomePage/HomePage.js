@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import Card from "../../components/Card/Card";
 import NavBar from "../../components/NavBar/NavBar";
@@ -8,32 +8,41 @@ import * as ProductService from "../../service/ProductService";
 import { useQuery } from "@tanstack/react-query";
 import "./HomePage.scss";
 function HomePage() {
-  const searchProduct = useSelector((state) => state.product.search);
-  const searchDebounce = useDebounce(searchProduct, 500);
+  // const searchProduct = useSelector((state) => state.product.search);
+  // const searchDebounce = useDebounce(searchProduct, 500);
   const [Loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(6);
-
+  const [typeProduct, setTypeProduct] = useState([]);
   const fetchAllProducts = async (context) => {
-    const limit = context && context.queryKey && context.queryKey[1];
-    const search = context && context.queryKey && context.queryKey[2];
-    const res = await ProductService.getAllProduct({ search, limit });
+    // const limit = context && context.queryKey && context.queryKey[1];
+    // const search = context && context.queryKey && context.queryKey[2];
+    const res = await ProductService.getAllProduct({ limit });
 
     return res;
   };
-
+  const getAllTypeProduct = async () => {
+    let res = await ProductService.getAllTypeProduct();
+    if (res && res.status === "OK") {
+      setTypeProduct(res.data);
+    }
+  };
   const {
     isLoading,
     data: products,
     isPreviousData,
-  } = useQuery(["product"], fetchAllProducts, {
+  } = useQuery(["product", limit], fetchAllProducts, {
     retry: 3,
     retryDelay: 1000,
     keepPreviousData: true,
   });
+  //useEffect
+  useEffect(() => {
+    getAllTypeProduct();
+  }, []);
   return (
-    <div style={{ height: "100rem" }}>
-      <NavBar />
-      <div className="container">
+    <div className="home-page-container">
+      <NavBar typeProduct={typeProduct} />
+      <div className="home-page-content container">
         <Sliders />
         <div className="card-container container">
           {products &&
@@ -55,6 +64,15 @@ function HomePage() {
                 />
               );
             })}
+        </div>
+        <div className="home-page-button-load-more text-center my-3">
+          <button
+            disabled={(products && products.total === products.data.length) || (products && products.allPage === 1)}
+            className="btn btn-lg"
+            onClick={() => setLimit((prev) => prev + 6)}
+          >
+            Xem thêm
+          </button>
         </div>
       </div>
     </div>

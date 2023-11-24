@@ -5,6 +5,7 @@ import OffCanvas from "../OffCanvas/OffCCanvas";
 import { useSelector } from "react-redux";
 function UserInfoButton(props) {
   const user = useSelector((state) => state.user);
+  const order = useSelector((state) => state.order);
   let [userInfo, setUserInfo] = useState({
     userName: "",
     image: "",
@@ -25,13 +26,18 @@ function UserInfoButton(props) {
       setIsLoading(!isLoading);
     }
   }, [props.userInfo]);
-
   return (
     <div className="user-info-button-container">
       <OffCanvas />
       <div className="user-info-button-content">
-        <button className="user-info-button-cart btn btn-light" style={{ width: "3rem" }}>
+        <button className="user-info-button-cart btn btn-light  mx-1 position-relative" style={{ width: "3rem" }}>
           <i className="fa-solid fa-cart-shopping"></i>
+          {user && user.id && order && order.orderItems.length > 0 && (
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {order.orderItems.length}
+              <span className="visually-hidden">unread messages</span>
+            </span>
+          )}
         </button>
         {userInfo && userInfo.id !== "" ? (
           <>

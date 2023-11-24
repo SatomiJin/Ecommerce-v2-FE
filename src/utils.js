@@ -69,3 +69,8 @@ export const handleLogOut = () => {
     return persistor.purge();
   });
 };
+
+export const formattedPrice = (price) => {
+  let result = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price);
+  return result;
+};

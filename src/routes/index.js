@@ -1,4 +1,5 @@
 import AdminPage from "../pages/AdminPage/AdminPage";
+import CartPage from "../pages/CartPage/CartPage";
 import HomePage from "../pages/HomePage/HomePage";
 import ProductDetailPage from "../pages/ProductDetailPage/ProductDetailPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
@@ -31,6 +32,12 @@ export const routes = [
     path: "/product/product-detail/:name",
     page: ProductDetailPage,
     isShowHeader: true,
+  },
+  {
+    path: "/cart",
+    page: CartPage,
+    isShowHeader: true,
+    isLogin: true,
   },
   {
     path: "/system/admin-page",

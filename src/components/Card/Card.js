@@ -19,8 +19,12 @@ function Card(props) {
       <img src={props && props.image} style={{ height: "11rem" }} className="card-img-top" alt="..." />
       <div className="card-body">
         <div className="card-name-product my-2">{props && props.name}</div>
-        <div className="card-discount text-center my-1">Giảm {props && props.discount}%</div>
-        <div className="card-sold">
+
+        <div className="card-price">
+          <div className="card-price-product">{props && props.price}</div>
+          <div className="card-discount text-center my-1">Giảm {props && props.discount}%</div>
+        </div>
+        <div className="card-sold my-2">
           {renderStar(4)} <span>Đã bán </span>
           {props && props.sold}
         </div>

@@ -8,7 +8,7 @@
 
     .card-body {
         border-top: 1px solid #ccc;
-        min-height: 10rem;
+        min-height: 12rem;
 
         .card-name-product {
             font-size: 1rem;
@@ -17,16 +17,24 @@
             text-transform: capitalize;
             word-wrap: break-word;
         }
-
-        .card-discount {
-            font-size: 0.7rem;
-            border: 1px solid #fff;
-            width: 5rem;
-            font-weight: 600;
-            border-radius: 0.3rem;
-            color: #fff;
-            padding: 0.2rem;
-            background-color: rgb(246, 145, 19);
+        .card-price{
+            display: flex;
+            align-items: center;
+            .card-price-product{
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
+                color: #d0011b;
+            }
+            .card-discount {
+                font-size: 0.7rem;
+                border: 1px solid #fff;
+                width: 5rem;
+                font-weight: 600;
+                border-radius: 0.3rem;
+                color: #fff;
+                padding: 0.2rem;
+                background-color: rgb(246, 145, 19);
+            }
         }
 
         .card-sold{

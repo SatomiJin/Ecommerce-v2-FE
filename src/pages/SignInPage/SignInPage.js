@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ import Loading from "../../components/Loading/Loading";
 import { updateUser } from "../../redux/slides/UserReducer";
 
 function SignInPage() {
+  const location = useLocation();
   const [dataLogin, setDataLogin] = useState({
     email: "",
     password: "",
@@ -39,8 +40,13 @@ function SignInPage() {
   //useEffect
   useEffect(() => {
     if (data && data.status === "OK") {
+      if (location?.state) {
+        navigate(`${location.state}`);
+      } else {
+        navigate("/");
+      }
+
       toast.success("Đăng nhập thành công");
-      navigate("/");
       localStorage.setItem("access_token", JSON.stringify(data && data.access_token));
       localStorage.setItem("refresh_token", JSON.stringify(data && data.refresh_token));
       if (data && data.access_token) {
