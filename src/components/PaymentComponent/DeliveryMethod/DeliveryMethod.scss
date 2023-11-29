@@ -1,0 +1,17 @@
+.delivery-method-container {
+    margin-bottom: 1rem;
+    .delivery-method-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .delivery-method-body {
+        .form-group {
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgb(240, 248, 255);
+            border: 1px solid rgb(194, 225, 255);
+            margin-top: 0.5rem;
+        }
+    }
+}

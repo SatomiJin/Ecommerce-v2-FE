@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 import changeProduct from "../../assets/images/Free-ship/change-product.png";
 import realProduct from "../../assets/images/Free-ship/real-product.png";
 import freeShipRed from "../../assets/images/Free-ship/free-ship-red.png";
 import * as ProductService from "../..//service/ProductService";
 import freeShip from "../../assets/images/Free-ship/free-ship.png";
-import "./ProductDetail.scss";
-import { useQuery } from "@tanstack/react-query";
 import { addOrderProduct, resetOrder } from "../../redux/slides/OrderReducer";
+import * as utils from "../../utils";
+import "./ProductDetail.scss";
 
 function ProductDetail(props) {
   const navigate = useNavigate();
@@ -70,7 +71,8 @@ function ProductDetail(props) {
         toast.success("Đã thêm hàng vào giỏ!!");
         dispatch(
           addOrderProduct({
-            orderRedux: {
+            userId: user?.id,
+            orderItem: {
               name: productDetails?.name,
               amount: amountProduct,
               image: productDetails?.image,
@@ -141,7 +143,7 @@ function ProductDetail(props) {
             </div>
           </div>
           <div className="product-detail-content-right-price">
-            <h2>{productDetails && productDetails.price}</h2>{" "}
+            <h2>{productDetails && productDetails.price && utils.formattedPrice(productDetails.price)}</h2>{" "}
             <span className="discount">{productDetails && productDetails.discount}% Giảm</span>
           </div>
           <div className="product-detail-content-right-delivery">

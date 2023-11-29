@@ -1,17 +1,25 @@
-import { Link } from "react-router-dom";
-import "./UserInfoButton.scss";
-import { useEffect, useState } from "react";
-import OffCanvas from "../OffCanvas/OffCCanvas";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
+import "./UserInfoButton.scss";
+import OffCanvas from "../OffCanvas/OffCCanvas";
 function UserInfoButton(props) {
   const user = useSelector((state) => state.user);
   const order = useSelector((state) => state.order);
+  const navigate = useNavigate();
   let [userInfo, setUserInfo] = useState({
     userName: "",
     image: "",
     id: "",
   });
-
+  const redirectCart = () => {
+    if (user && user.id) {
+      navigate("/cart-product");
+    } else {
+      navigate("/sign-in");
+    }
+  };
   const [isOpenPo, setIsOpenPo] = useState(false);
   let [isLoading, setIsLoading] = useState(false);
   //useEffect
@@ -30,7 +38,11 @@ function UserInfoButton(props) {
     <div className="user-info-button-container">
       <OffCanvas />
       <div className="user-info-button-content">
-        <button className="user-info-button-cart btn btn-light  mx-1 position-relative" style={{ width: "3rem" }}>
+        <button
+          onClick={redirectCart}
+          className="user-info-button-cart btn btn-light  mx-1 position-relative"
+          style={{ width: "3rem" }}
+        >
           <i className="fa-solid fa-cart-shopping"></i>
           {user && user.id && order && order.orderItems.length > 0 && (
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -39,6 +51,7 @@ function UserInfoButton(props) {
             </span>
           )}
         </button>
+
         {userInfo && userInfo.id !== "" ? (
           <>
             <button

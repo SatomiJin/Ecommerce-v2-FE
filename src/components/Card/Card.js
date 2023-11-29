@@ -1,3 +1,4 @@
+import * as utils from "../../utils";
 import { useNavigate } from "react-router-dom";
 import "./Card.scss";
 
@@ -21,8 +22,10 @@ function Card(props) {
         <div className="card-name-product my-2">{props && props.name}</div>
 
         <div className="card-price">
-          <div className="card-price-product">{props && props.price}</div>
-          <div className="card-discount text-center my-1">Giảm {props && props.discount}%</div>
+          <div className="card-price-product">{props && props.price && utils.formattedPrice(props.price)}</div>
+          {props && props.discount > 0 && (
+            <div className="card-discount text-center my-1">Giảm {props && props.discount}%</div>
+          )}
         </div>
         <div className="card-sold my-2">
           {renderStar(4)} <span>Đã bán </span>

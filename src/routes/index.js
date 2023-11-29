@@ -1,6 +1,7 @@
 import AdminPage from "../pages/AdminPage/AdminPage";
 import CartPage from "../pages/CartPage/CartPage";
 import HomePage from "../pages/HomePage/HomePage";
+import PaymentPage from "../pages/PaymentPage/PaymentPage";
 import ProductDetailPage from "../pages/ProductDetailPage/ProductDetailPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
@@ -34,8 +35,14 @@ export const routes = [
     isShowHeader: true,
   },
   {
-    path: "/cart",
+    path: "/cart-product",
     page: CartPage,
+    isShowHeader: true,
+    isLogin: true,
+  },
+  {
+    path: "/payment-order",
+    page: PaymentPage,
     isShowHeader: true,
     isLogin: true,
   },

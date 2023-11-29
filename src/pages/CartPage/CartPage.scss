@@ -20,9 +20,20 @@
                 padding: 0.7rem;
                 border-radius: 0.5rem;
                 font-size: 1.2rem;
+                
                 background-color: #fff;
                 color: rgb(56, 56, 61);
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                .cart-page-body-left-top-remove{
+                    i{
+                        transition: 0.3s;
+                        font-size: 1.2rem;
+                        cursor: pointer;
+                        &:hover{
+                            color: rgb(255, 66, 78);
+                        }
+                    }
+                }
             }
 
             .cart-page-body-left-bottom {
@@ -38,15 +49,17 @@
                         .cart-page-body-left-bottom-b-product {
                             display: flex;
                             align-items: center;
-
+                           
                             input {
 
                                 margin-right: 0.5rem;
                             }
 
                             .cart-page-body-left-bottom-b-product-img {
-                                width: 6rem;
-                                height: 6rem;
+                                width: 4rem;
+                                height: 4rem;
+
+
                                 background-image: url('../../assets/images/product/samsung-galaxy-zfold5-xanh-256gb-1-1.jpg');
                                 background-position: center;
                                 background-repeat: no-repeat;
@@ -54,7 +67,7 @@
                             }
 
                             .cart-page-body-left-bottom-b-product-name {
-                                font-size: 1rem;
+                                font-size: 0.8rem;
                                 font-weight: 400;
                                 color: rgb(39, 39, 42);
                                 display: -webkit-box;
@@ -68,7 +81,7 @@
 
                         .cart-page-body-left-bottom-b-price {
                             display: flex;
-                            font-size: 1.2rem;
+                            font-size: 1rem;
                             font-weight: 600;
                             color: rgb(39, 39, 42);
                             align-items: center;
@@ -120,7 +133,7 @@
 
                                 &:hover {
                                     cursor: pointer;
-                                    color: red;
+                                    color: rgb(255, 66, 78);
                                 }
                             }
                         }
@@ -132,50 +145,7 @@
         .cart-page-body-right {
             margin-left: 2rem;
 
-            .cart-page-body-right-top {
-                background-color: #fff;
-                border-radius: 1rem;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-                .title {
-                    color: rgb(128, 128, 137);
-                    font-weight: normal;
-                    padding-top: 0.5rem;
-                    font-size: 1.5rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                .user-info {
-                    padding: 0.3rem;
-                    font-weight: bold;
-                    display: flex;
-                    justify-content: center;
-
-                    .name {
-                        border-right: 1px solid rgb(128, 128, 137);
-                        width: 50%;
-                    }
-
-                    .phone {
-                        width: 50%;
-                        text-align: center;
-                    }
-                }
-
-                .address {
-                    padding: 1rem;
-                    color: rgb(128, 128, 137);
-                    font-weight: normal;
-                    text-align: justify;
-
-                    span {
-                        color: rgb(0, 171, 86);
-                        background-color: rgb(239, 255, 244);
-                        padding: 0.5rem;
-                    }
-                }
-            }
-
+            
             .cart-page-body-right-middle {
                 background-color: #fff;
                 border-radius: 1rem;
@@ -191,15 +161,23 @@
                     justify-content: space-between;
                     padding: 1rem;
 
-                    border-bottom: 1px solid #ccc;
-
                     .price-value {
                         font-size: 1.2rem;
                         font-weight: 500;
                         color: rgb(51, 51, 51);
                     }
                 }
-
+                .cart-page-body-right-middle-discount{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    -webkit-box-pack: justify;
+                    justify-content: space-between;
+                    padding: 0 1.5rem 0.5rem 1.5rem;
+                    border-bottom: 1px solid #ccc;
+                    span{
+                        font-size: 0.8rem;
+                    }
+                }
                 .cart-page-body-right-middle-total {
                     display: flex;
                     position: relative;
