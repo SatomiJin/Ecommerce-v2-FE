@@ -97,7 +97,7 @@ function CartPage() {
     }
 
     dispatch(selectedOrder({ listChecked, priceOrder }));
-    navigate("/payment-order");
+    navigate("/payment/payment-order");
   };
 
   // useEffect;

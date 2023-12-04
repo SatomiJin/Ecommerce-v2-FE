@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import "./ProductComponent.scss";
 import * as utils from "../../../utils";
 import { useEffect } from "react";
-import { shippingPrice } from "../../../redux/slides/OrderReducer";
+import { shippingPrice, choosePaymentMethod } from "../../../redux/slides/OrderReducer";
 function ProductComponent(props) {
-  let { deliveryOption } = props;
+  let { deliveryOption, paymentOption } = props;
   let order = useSelector((state) => state.order);
   let dispatch = useDispatch();
 
@@ -13,6 +13,8 @@ function ProductComponent(props) {
   //useEffect
   useEffect(() => {
     dispatch(shippingPrice({ methodShipping: deliveryOption }));
+    // dispatch(choosePaymentMethod({ paymentOption: paymentOption }));
+    dispatch(choosePaymentMethod({ paymentOption }));
   }, [deliveryOption]);
   return (
     <div className="product-component-container">

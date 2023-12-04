@@ -20,12 +20,12 @@ function PaymentMethod(props) {
                 onChange={(e) => handleChooseMethod(e)}
                 type="radio"
                 value={item.value}
-                id={item.value}
+                id={index}
                 defaultChecked={index === 2}
                 name="group"
                 className="form-check-input"
               />
-              <label htmlFor={item.value} className="form-check-label mx-2">
+              <label htmlFor={index} className="form-check-label mx-2">
                 {item.name}
               </label>
             </div>

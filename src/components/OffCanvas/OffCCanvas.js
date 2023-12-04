@@ -8,6 +8,8 @@ import { resetUser } from "../../redux/slides/UserReducer";
 function OffCanvas() {
   const [userData, setUserData] = useState({});
   const user = useSelector((state) => state.user);
+  let roleUser = utils.roleUser(user?.roleId);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,6 +46,9 @@ function OffCanvas() {
       case "logout":
         handleLogOuttUser();
         break;
+      case "myOrder":
+        navigate("/user/your-order");
+        break;
       case "manage":
         navigate("/system/admin-page");
         break;
@@ -78,15 +83,17 @@ function OffCanvas() {
               Đơn hàng của tôi
             </button>
             <br />
-            <button
-              data-bs-dismiss="offcanvas"
-              type="button"
-              className="btn"
-              name="manage"
-              onClick={() => redirectPage("manage")}
-            >
-              Quản lý hệ thống
-            </button>
+            {user && roleUser === "ADMIN" && (
+              <button
+                data-bs-dismiss="offcanvas"
+                type="button"
+                className="btn"
+                name="manage"
+                onClick={() => redirectPage("manage")}
+              >
+                Quản lý hệ thống
+              </button>
+            )}
             <br />
             <button
               data-bs-dismiss="offcanvas"

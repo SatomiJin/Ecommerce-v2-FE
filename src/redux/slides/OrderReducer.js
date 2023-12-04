@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as constant from "../../constant";
+
+let delivery = constant.orderOptions.delivery;
+let payment = constant.orderOptions.payment;
 
 const initialState = {
   userId: "",
   orderItems: [],
   orderItemsSelected: [],
   shippingAddress: "",
-  paymentMethod: "",
+  paymentMethod: {},
+  methodShipping: {},
   shippingPrice: 0,
   totalPrice: 0,
   discountPrice: 0,
@@ -63,7 +68,6 @@ export const orderSlide = createSlice({
     },
     removeAllProductOrder: (state, action) => {
       const { listChecked } = action.payload;
-
       const itemOrders = state?.orderItems?.filter((item) => !listChecked?.includes(item.name));
       const itemsOrderSelected = state?.orderItemsSelected?.filter((item) => !listChecked?.includes(item.name));
 
@@ -85,9 +89,24 @@ export const orderSlide = createSlice({
     },
     shippingPrice: (state, action) => {
       let { methodShipping } = action.payload;
+      // eslint-disable-next-line array-callback-return
+      delivery.map((item) => {
+        if (methodShipping === item.value) {
+          state.methodShipping = item;
+        }
+      });
       if (methodShipping === "save") state.shippingPrice = 10000;
       if (methodShipping === "train") state.shippingPrice = 30000;
       if (methodShipping === "fast") state.shippingPrice = 20000;
+    },
+    choosePaymentMethod: (state, action) => {
+      let { paymentOption } = action.payload;
+      // eslint-disable-next-line array-callback-return
+      payment.map((item) => {
+        if (paymentOption === item.value) {
+          state.paymentMethod = item;
+        }
+      });
     },
   },
 });
@@ -101,6 +120,7 @@ export const {
   removeAllProductOrder,
   selectedOrder,
   shippingPrice,
+  choosePaymentMethod,
 } = orderSlide.actions;
 
 export default orderSlide.reducer;

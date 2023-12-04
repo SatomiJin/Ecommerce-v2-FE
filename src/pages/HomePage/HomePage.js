@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
 import Card from "../../components/Card/Card";
+
+import Loading from "../../components/Loading/Loading";
 import NavBar from "../../components/NavBar/NavBar";
 import Sliders from "../../components/Sliders/Sliders";
 import * as ProductService from "../../service/ProductService";
@@ -10,7 +10,7 @@ import "./HomePage.scss";
 function HomePage() {
   // const searchProduct = useSelector((state) => state.product.search);
   // const searchDebounce = useDebounce(searchProduct, 500);
-  const [Loading, setLoading] = useState(false);
+  // const [Loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(6);
   const [typeProduct, setTypeProduct] = useState([]);
   const fetchAllProducts = async (context) => {
@@ -44,36 +44,38 @@ function HomePage() {
       <NavBar typeProduct={typeProduct} />
       <div className="home-page-content container">
         <Sliders />
-        <div className="card-container container">
-          {products &&
-            products.data &&
-            products.data.map((item, index) => {
-              return (
-                <Card
-                  key={index}
-                  id={item.id}
-                  countInStock={item.countInStock}
-                  description={item.description}
-                  image={item.image}
-                  name={item.name}
-                  price={item.price}
-                  rating={item.rating}
-                  type={item.type}
-                  sold={item.sold}
-                  discount={item.discount}
-                />
-              );
-            })}
-        </div>
-        <div className="home-page-button-load-more text-center my-3">
-          <button
-            disabled={(products && products.total === products.data.length) || (products && products.allPage === 1)}
-            className="btn btn-lg"
-            onClick={() => setLimit((prev) => prev + 6)}
-          >
-            Xem thêm
-          </button>
-        </div>
+        <Loading isLoading={isLoading}>
+          <div className="card-container container">
+            {products &&
+              products.data &&
+              products.data.map((item, index) => {
+                return (
+                  <Card
+                    key={index}
+                    id={item.id}
+                    countInStock={item.countInStock}
+                    description={item.description}
+                    image={item.image}
+                    name={item.name}
+                    price={item.price}
+                    rating={item.rating}
+                    type={item.type}
+                    sold={item.sold}
+                    discount={item.discount}
+                  />
+                );
+              })}
+          </div>
+          <div className="home-page-button-load-more text-center my-3">
+            <button
+              disabled={(products && products.total === products.data.length) || (products && products.allPage === 1)}
+              className="btn btn-lg"
+              onClick={() => setLimit((prev) => prev + 6)}
+            >
+              Xem thêm
+            </button>
+          </div>
+        </Loading>
       </div>
     </div>
   );

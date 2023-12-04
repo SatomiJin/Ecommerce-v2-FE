@@ -3,6 +3,7 @@ import AdminMenu from "../../components/AdminMenu/AdminMenu";
 import "./AdminPage.scss";
 import AdminUser from "../../components/AdminComponent/AdminUser";
 import AdminProduct from "../../components/AdminComponent/AdminProduct";
+import AdminOrder from "../../components/AdminComponent/AdminOrder";
 function AdminPage() {
   const [option, setOption] = useState("");
   const handleSelectOption = (key) => {
@@ -14,6 +15,8 @@ function AdminPage() {
         return <AdminUser />;
       case "products":
         return <AdminProduct />;
+      case "orders":
+        return <AdminOrder />;
       default:
         return <AdminUser />;
     }

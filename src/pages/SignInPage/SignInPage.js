@@ -52,7 +52,7 @@ function SignInPage() {
       if (data && data.access_token) {
         const decoded = jwtDecode(data.access_token);
         if (decoded && decoded.id) {
-          handleGetDetail(decoded.id, data.access_token);
+          handleGetDetail(decoded.id, decoded.email, data.access_token);
         }
       }
     }
@@ -62,10 +62,15 @@ function SignInPage() {
     }
   }, [data]);
   //đẩy dữ liệu vào và quản lý vs redux
-  const handleGetDetail = async (id, token) => {
+  const handleGetDetail = async (id, email, token) => {
+    let data = {
+      id: id,
+      email: email,
+    };
+
     let storage = localStorage.getItem("refresh_token");
     const refreshToken = JSON.parse(storage);
-    const res = await UserService.getDetailUserById(id, token);
+    const res = await UserService.getDetailUserById(data, token);
     dispatch(updateUser({ ...res.data, access_token: token, refreshToken: refreshToken }));
   };
 

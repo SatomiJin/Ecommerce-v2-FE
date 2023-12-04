@@ -26,6 +26,9 @@ function UserProfile() {
   const mutation = useMutationHook(async (data) => {
     let { access_token, userData } = data;
     let res = await UserService.updateUserInfo(userData, access_token);
+    if (res && res.status === "OK") {
+      dispatch(updateUser(userData));
+    }
     return res;
   });
   let { isSuccess, isLoading, data } = mutation;
@@ -74,9 +77,9 @@ function UserProfile() {
     const res = await UserService.getDetailUserById(id, token);
     dispatch(updateUser({ ...res.data, access_token: token }));
   };
+  console.log(userData);
   //update user
-  const handleUpdateUser = async (e) => {
-    e.preventDefault();
+  const handleUpdateUser = async () => {
     mutation.mutate({ userData, access_token: user.access_token });
   };
   return (
@@ -123,7 +126,7 @@ function UserProfile() {
         </div>
 
         <div className="profile-user-content">
-          <form className="row" onSubmit={(e) => handleUpdateUser(e)}>
+          <form className="row">
             <div className="form-group">
               <label>Địa chỉ Email:</label>
               <input
@@ -194,7 +197,7 @@ function UserProfile() {
               )}
             </div>
             <div className="profile-user-button my-1">
-              <button type="submit" className="btn btn-lg btn-outline-success">
+              <button type="button" onClick={handleUpdateUser} className="btn btn-lg btn-outline-success">
                 Cập nhật thông tin
               </button>
             </div>

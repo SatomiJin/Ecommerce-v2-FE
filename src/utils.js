@@ -74,3 +74,37 @@ export const formattedPrice = (price) => {
   let result = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price);
   return result;
 };
+
+//status
+export const deliveryStatus = (status) => {
+  let result = "";
+  switch (status) {
+    case "S1":
+      result = "Chờ xác nhận";
+      break;
+    case "S2":
+      result = "Đang vận chuyển";
+      break;
+    case "S3":
+      result = "Đã nhận hàng";
+      break;
+    default:
+      result = "";
+  }
+  return result;
+};
+
+export const paymentStatus = (status) => {
+  let result = "";
+  switch (status) {
+    case "P1":
+      result = "Chưa thanh toán";
+      break;
+    case "P2":
+      result = "Đã thanh toán";
+      break;
+    default:
+      result = "";
+  }
+  return result;
+};

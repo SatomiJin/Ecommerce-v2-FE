@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 function DeliveryMethod(props) {
   let { handleOnChangeDelivery } = props;
-  let dispatch = useDispatch();
   let deliveryMethod = constant.orderOptions.delivery;
 
   const handleChooseDelivery = (e) => {

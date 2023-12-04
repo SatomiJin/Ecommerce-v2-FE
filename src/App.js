@@ -32,14 +32,19 @@ function App() {
     setIsLoading(!isLoading);
     const { decoded, storageData } = handleDecoded();
     if (decoded && decoded.id) {
-      handleGetDetailUser(decoded.id, storageData);
+      handleGetDetailUser(decoded.id, decoded.email, storageData);
     }
     setIsLoading(!isLoading);
   }, []);
-  const handleGetDetailUser = async (id, token) => {
+  const handleGetDetailUser = async (id, email, token) => {
+    let data = {
+      id: id,
+      email: email,
+    };
+
     let storageRefreshToken = localStorage.getItem("refresh_token");
     let refreshToken = JSON.parse(storageRefreshToken);
-    let res = await UserService.getDetailUserById(id, token);
+    let res = await UserService.getDetailUserById(data, token);
     dispatch(updateUser({ ...res.data, access_token: token, refreshToken: refreshToken }));
   };
 

@@ -1,0 +1,98 @@
+.detail-order-container {
+    min-height: 100vh;
+    background-color: #ededed;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    .detail-order-title {
+        margin-left: 2rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .detail-order-body {
+
+        .detail-order-body-order {
+            margin-top: 2rem;
+            background-color: #fff;
+            padding: 2rem 0;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            .address-payment-delivery {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+
+                .address,
+                .payment,
+                .delivery {
+                    text-align: justify;
+                    border-radius: 1rem;
+                    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+                    .title {
+                        text-transform: uppercase;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid #ccc;
+                        text-align: center;
+                    }
+
+                    .content {
+                        padding: 1rem;
+                    }
+
+                    .name {
+                        font-weight: 600;
+                    }
+                }
+
+            }
+
+            .product-table {
+                margin: 3rem 2rem 1rem 2rem;
+                border-radius: 1rem;
+
+                .table {
+                    border-radius: 1rem;
+
+                    tbody {
+                        td {
+                            // width: 4rem;
+                            // height: 4rem;
+                            display: -ms-flexbox;
+
+                            // align-items: first baseline;
+                            img {
+                                width: 5rem;
+                                height: 5rem;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            .footer-order {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 2rem;
+
+                .create-at {
+                    font-size: 1.4rem;
+                }
+
+                .total-price {
+                    font-size: 1.4rem;
+
+                    span {
+                        font-size: 1.4rem;
+                        color: rgb(255, 66, 78);
+                    }
+                }
+            }
+        }
+    }
+}

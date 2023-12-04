@@ -11,10 +11,11 @@ export const signUpUser = async (data) => {
   return res.data;
 };
 
-export const getDetailUserById = async (id, access_token) => {
-  let res = await axios.get(`${process.env.REACT_APP_API_KEY}user/get-detail-user/${id}`, {
+export const getDetailUserById = async (data, access_token) => {
+  let res = await axios.get(`${process.env.REACT_APP_API_KEY}user/get-detail-user/${data.id}`, {
     headers: {
       token: `Bearer ${access_token}`,
+      email: data.email,
     },
   });
 
@@ -33,9 +34,11 @@ export const refreshToken = async (refreshToken) => {
 
 export const updateUserInfo = async (data, access_token) => {
   // update - user - info;
+
   let res = await axios.put(`${process.env.REACT_APP_API_KEY}user/update-user-info`, data, {
     headers: {
       token: `Bearer ${access_token}`,
+      email: data.email,
     },
   });
   return res.data;
