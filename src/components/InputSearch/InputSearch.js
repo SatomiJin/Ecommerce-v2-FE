@@ -57,7 +57,7 @@ function InputSearch() {
       </div>
       {products && products.data && search && (
         <div className="search-content">
-          {products.data.length > 0 ? (
+          {products.data?.length > 0 ? (
             <ul>
               {products.data.map((item, index) => {
                 return (

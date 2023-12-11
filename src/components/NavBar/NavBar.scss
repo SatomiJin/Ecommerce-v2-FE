@@ -1,8 +1,9 @@
 .nav-bar-container {
 
     z-index: 100;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 0.4rem 1.2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1rem 2rem;
     .navbar {
+        margin-bottom: 2rem;
         .container-fluid {
             .navbar-collapse {
                 font-size: 1.1rem;
@@ -11,7 +12,7 @@
                         text-align: center;
                         border-right: 2px solid #ccc !important;
                         min-width: 5rem !important;
-                        .nav-link{
+                        button{
                             font-weight: 500;
                             transition: 0.5s;
                             &:hover{

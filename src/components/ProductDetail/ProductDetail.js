@@ -29,7 +29,7 @@ function ProductDetail(props) {
       return res.data;
     } else {
       const productNameReverse = location.pathname.split("/");
-      const lastSegment = productNameReverse[productNameReverse.length - 1];
+      const lastSegment = productNameReverse[productNameReverse?.length - 1];
       const reverseName1 = lastSegment.replace(/-/g, " ");
 
       const res = await ProductService.getDetailProduct(reverseName1);

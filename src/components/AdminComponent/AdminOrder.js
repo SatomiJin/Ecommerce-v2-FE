@@ -30,10 +30,11 @@ function AdminOrder() {
   };
   const handleConfirmOrder = async (orderId) => {
     let res = await OrderService.confirmOrder(user?.access_token, orderId, user?.email);
+    handleUpdateStatus(true);
     if (res && res.status === "OK") {
-      handleUpdateStatus(true);
       toast.success("Xác nhận đơn hàng thành công!!");
     } else {
+      handleUpdateStatus(false);
       toast.error("Xác nhận đơn hàng thất bại!!");
     }
   };
@@ -46,15 +47,18 @@ function AdminOrder() {
         toast.success("Xóa đơn hàng thành công");
       } else {
         toast.errors("Xóa đơn hàng thất bại");
+        setUpdateList(false);
       }
     }
   };
   //useEffect
   useEffect(() => {
+    setUpdateList(true);
     handleGetAllOrder();
+    setUpdateList(false);
   }, []);
   useEffect(() => {
-    if (updateList) {
+    if (updateList === true) {
       handleGetAllOrder();
       setUpdateList(false);
     }
@@ -63,23 +67,24 @@ function AdminOrder() {
     <>
       <div className="admin-order-container">
         <div className="admin-order-title">Quản lý đơn hàng</div>
+
         <div className="admin-order-body">
           <div className="admin-order-table container">
-            <Loading isLoading={updateList}>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tên khách hàng</th>
-                    <th scope="col">Trạng thái đơn hàng</th>
-                    <th scope="col">Thanh toán</th>
-                    <th scope="col">Ngày đặt</th>
-                    <th scope="col">Thao tác đơn hàng</th>
-                  </tr>
-                </thead>
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tên khách hàng</th>
+                  <th scope="col">Trạng thái đơn hàng</th>
+                  <th scope="col">Thanh toán</th>
+                  <th scope="col">Ngày đặt</th>
+                  <th scope="col">Thao tác đơn hàng</th>
+                </tr>
+              </thead>
+              <Loading isLoading={updateList}>
                 <tbody>
                   {listOrder &&
-                    listOrder.length > 0 &&
+                    listOrder?.length > 0 &&
                     listOrder.map((item, index) => {
                       let userData = item.user;
                       let createdAt = new Date(item.createdAt);
@@ -110,8 +115,8 @@ function AdminOrder() {
                       );
                     })}
                 </tbody>
-              </table>
-            </Loading>
+              </Loading>
+            </table>
           </div>
         </div>
       </div>

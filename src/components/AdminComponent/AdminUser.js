@@ -107,7 +107,7 @@ function AdminUser() {
 
               <tbody>
                 {listUser &&
-                  listUser.length > 0 &&
+                  listUser?.length > 0 &&
                   listUser.map((item, index) => {
                     return (
                       <tr key={index}>

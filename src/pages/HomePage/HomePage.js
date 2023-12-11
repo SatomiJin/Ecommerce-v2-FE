@@ -11,7 +11,7 @@ function HomePage() {
   // const searchProduct = useSelector((state) => state.product.search);
   // const searchDebounce = useDebounce(searchProduct, 500);
   // const [Loading, setLoading] = useState(false);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(8);
   const [typeProduct, setTypeProduct] = useState([]);
   const fetchAllProducts = async (context) => {
     // const limit = context && context.queryKey && context.queryKey[1];
@@ -26,11 +26,7 @@ function HomePage() {
       setTypeProduct(res.data);
     }
   };
-  const {
-    isLoading,
-    data: products,
-    isPreviousData,
-  } = useQuery(["product", limit], fetchAllProducts, {
+  const { isLoading, data: products } = useQuery(["product", limit], fetchAllProducts, {
     retry: 3,
     retryDelay: 1000,
     keepPreviousData: true,
@@ -68,7 +64,7 @@ function HomePage() {
           </div>
           <div className="home-page-button-load-more text-center my-3">
             <button
-              disabled={(products && products.total === products.data.length) || (products && products.allPage === 1)}
+              disabled={(products && products.total === products.data?.length) || (products && products.allPage === 1)}
               className="btn btn-lg"
               onClick={() => setLimit((prev) => prev + 6)}
             >

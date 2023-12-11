@@ -61,7 +61,6 @@ function UpdateProductModal(props) {
       sold: 0,
       countInStock: productDetail.countInStock,
     };
-    console.log(user.access_token);
     let res = await ProductService.updateProduct(data, user.access_token);
     if (res && res.status === "OK") {
       toast.success("Cập nhật sản phẩm thành công!!");

@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
-import "./NavBar.scss";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as utils from "../../utils";
+import "./NavBar.scss";
+
 function NavBar(props) {
+  let navigate = useNavigate();
+
+  const handleRedirect = (type) => {
+    console.log(type);
+    navigate(`/product/type-product/${type.toLowerCase().replace(/\s/g, "-")}`, { state: type });
+  };
   let [arrType, setArrType] = useState([]);
   useEffect(() => {
     setArrType(props.typeProduct);
@@ -16,9 +24,9 @@ function NavBar(props) {
                 arrType.map((item, index) => {
                   return (
                     <li className="nav-item" key={index}>
-                      <Link className="nav-link active" aria-current="page" href="/">
-                        {item.type}
-                      </Link>
+                      <button onClick={() => handleRedirect(item.type)} className="btn">
+                        {utils.capitalizeFirstLetter(item.type)}
+                      </button>
                     </li>
                   );
                 })}

@@ -96,7 +96,7 @@ function DetailOrderPage() {
               </thead>
               <tbody>
                 {listProduct &&
-                  listProduct.length > 0 &&
+                  listProduct?.length > 0 &&
                   listProduct.map((item, index) => {
                     let provisionalPrice = item.price - (item.discount * item.price) / 100;
                     return (

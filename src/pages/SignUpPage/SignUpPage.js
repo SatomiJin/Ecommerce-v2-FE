@@ -14,7 +14,7 @@ function SignUpPage() {
     confirmPassword: "",
     address: "",
     phoneNumber: "",
-    gender: "",
+    gender: "M",
   });
 
   const handleOnchange = (e) => {

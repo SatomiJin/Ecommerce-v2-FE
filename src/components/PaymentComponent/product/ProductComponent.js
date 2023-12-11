@@ -22,7 +22,7 @@ function ProductComponent(props) {
         Giao hàng tiết kiêm <span>{utils.formattedPrice(order?.shippingPrice)}</span>
       </div>
       {listProduct &&
-        listProduct.length > 0 &&
+        listProduct?.length > 0 &&
         listProduct.map((item, index) => {
           return (
             <div key={index} className="product-component-content row">

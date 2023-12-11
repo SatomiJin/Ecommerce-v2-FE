@@ -47,7 +47,7 @@ function PaymentSuccess() {
         </div>
         <div className="payment-success-content-bottom">
           {listProduct &&
-            listProduct.length > 0 &&
+            listProduct?.length > 0 &&
             listProduct.map((item, index) => {
               return (
                 <div key={index} className="product-item row">

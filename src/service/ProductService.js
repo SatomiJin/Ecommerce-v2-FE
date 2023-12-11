@@ -3,7 +3,7 @@ import axios from "axios";
 export const getAllProduct = async (data) => {
   let res = {};
 
-  if (!data.limit) data.limit = 6;
+  if (!data.limit) data.limit = 8;
   if (!data.page) data.page = 0;
   if (data.search?.length > 0) {
     res = await axios.get(
@@ -47,11 +47,18 @@ export const deleteProduct = async (productName, access_token) => {
 };
 
 export const updateProduct = async (data, access_token) => {
-  console.log("access_token", access_token);
   const res = await axios.put(`${process.env.REACT_APP_API_KEY}product/update-product`, data, {
     headers: {
       token: `Bearer ${access_token}`,
     },
   });
+  return res.data;
+};
+
+export const getAllProductByType = async (typeProduct) => {
+  // typeProduct = "Điện Thoại";
+  const res = await axios.get(
+    `${process.env.REACT_APP_API_KEY}product/get-all-product-by-type?typeProduct=${typeProduct}`
+  );
   return res.data;
 };

@@ -61,7 +61,7 @@ function TotalPriceComponent(props) {
       user.address &&
       user.phoneNumber &&
       order &&
-      order.orderItemsSelected.length > 0
+      order.orderItemsSelected?.length > 0
     ) {
       await mutationCreateOrder.mutate({
         token: user?.access_token,
@@ -97,7 +97,7 @@ function TotalPriceComponent(props) {
       user.address &&
       user.phoneNumber &&
       order &&
-      order.orderItemsSelected.length > 0
+      order.orderItemsSelected?.length > 0
     ) {
       await mutationCreateOrder.mutate({
         token: user?.access_token,

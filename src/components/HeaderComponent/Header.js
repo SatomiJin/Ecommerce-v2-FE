@@ -21,8 +21,8 @@ function Header() {
   };
   //useEffect
   useEffect(() => {
-    setIsLoading(true);
     if ((user && user.firstName) || user.lastName) {
+      setIsLoading(true);
       let name = `${user.firstName} ${user.lastName}`;
       setUserInfo({ userName: name, id: user.id });
       setIsLoading(false);
@@ -41,7 +41,7 @@ function Header() {
             <InputSearch />
           </div>
           <div className="header-user col-3">
-            <Loading isLoading={false}>
+            <Loading isLoading={isLoading}>
               <UserInfoButton userInfo={userInfo} />
             </Loading>
           </div>

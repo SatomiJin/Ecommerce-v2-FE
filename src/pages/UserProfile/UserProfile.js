@@ -77,7 +77,6 @@ function UserProfile() {
     const res = await UserService.getDetailUserById(id, token);
     dispatch(updateUser({ ...res.data, access_token: token }));
   };
-  console.log(userData);
   //update user
   const handleUpdateUser = async () => {
     mutation.mutate({ userData, access_token: user.access_token });

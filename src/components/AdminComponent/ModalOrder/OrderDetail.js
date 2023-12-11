@@ -9,7 +9,6 @@ function OrderDetail(props) {
   let [orderCreatedAt, setOrderCreatedAt] = useState("");
   useEffect(() => {
     setListProduct(detailOrder?.orderItems);
-    console.log(detailOrder);
     if (detailOrder && detailOrder.createdAt) {
       let created = new Date(detailOrder?.createdAt);
       setOrderCreatedAt(created);
@@ -43,7 +42,7 @@ function OrderDetail(props) {
               </div>
               <div className="list-product">
                 {listProduct &&
-                  listProduct.length > 0 &&
+                  listProduct?.length > 0 &&
                   listProduct.map((item, index) => {
                     return (
                       <div key={index} className="product row">

@@ -124,10 +124,10 @@ function CartPage() {
                 id="allProduct"
                 className="form-check-input"
                 onChange={handleCheckAllProduct}
-                checked={listChecked.length === order?.orderItems?.length}
+                checked={listChecked?.length === order?.orderItems?.length}
               />
               <label htmlFor="allProduct" className="mx-2">
-                Tất cả ( {order && order.orderItems.length} sản phẩm )
+                Tất cả ( {order && order.orderItems?.length} sản phẩm )
               </label>
             </div>
             <div className="cart-page-body-left-top-price col-2">Đơn giá</div>
@@ -139,7 +139,7 @@ function CartPage() {
           </div>
 
           {order &&
-            order.orderItems.length > 0 &&
+            order.orderItems?.length > 0 &&
             order.orderItems.map((item, index) => {
               return (
                 <div key={index} className="cart-page-body-left-bottom row my-3">
