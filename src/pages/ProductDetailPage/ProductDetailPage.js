@@ -1,15 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProductDetail from "../../components/ProductDetail/ProductDetail";
 import "./ProductDetailPage.scss";
 function ProductDetailPage() {
   let product = useLocation();
-
+  let navigate = useNavigate();
   return (
     <div className="product-detail-page-container">
       <div className="product-detail-page-container-nav p-3" style={{ fontWeight: 500 }}>
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          Trang chủ&nbsp;
-        </Link>
+        <span onClick={() => navigate("/")}> Trang chủ</span>&nbsp;
         <i className="fa-solid fa-angle-right"></i> Chi tiết sản phẩm
       </div>
 

@@ -77,7 +77,7 @@ function SignUpPage() {
             <div className="form-group col-6">
               <label>Mật khẩu:</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 value={dataSignUp.password}
                 name="password"
@@ -87,7 +87,7 @@ function SignUpPage() {
             <div className="form-group col-6">
               <label>Nhập lại mật khẩu:</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 value={dataSignUp.confirmPassword}
                 name="confirmPassword"

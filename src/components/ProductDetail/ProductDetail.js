@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 
+import LoadingPage from "../LoadingPage/LoadingPage";
 import changeProduct from "../../assets/images/Free-ship/change-product.png";
 import realProduct from "../../assets/images/Free-ship/real-product.png";
 import freeShipRed from "../../assets/images/Free-ship/free-ship-red.png";
@@ -22,11 +23,14 @@ function ProductDetail(props) {
   const order = useSelector((state) => state.order);
   let [amountProduct, setAmountProduct] = useState(1);
   let [errorListOrder, setErrorLimitOrder] = useState(false);
-
+  // let [isLoading, setIsLoading] = useState(false);
   const getDetailProduct = async () => {
     if (props.productName !== null) {
       const res = await ProductService.getDetailProduct(props.productName);
-      return res.data;
+      // setIsLoading(true);
+      if (res && res.status === "OK") {
+        return res.data;
+      }
     } else {
       const productNameReverse = location.pathname.split("/");
       const lastSegment = productNameReverse[productNameReverse?.length - 1];
@@ -92,7 +96,7 @@ function ProductDetail(props) {
   let queryDetailProduct = useQuery(["product-details", props.productName], getDetailProduct, {
     enabled: !!props.productName,
   });
-  const { data: productDetails } = queryDetailProduct;
+  const { data: productDetails, isLoading } = queryDetailProduct;
   //useEffect
   useEffect(() => {
     const orderRedux = order?.orderItems?.find((item) => item?.name === productDetails?.name);
@@ -121,6 +125,7 @@ function ProductDetail(props) {
   }, [user]);
   return (
     <div className="product-detail-container">
+      {isLoading === true && <LoadingPage />}
       <div className="product-detail-content row">
         <div className="product-detail-content-left text-center col-4">
           <div
@@ -139,7 +144,7 @@ function ProductDetail(props) {
               15,5k <span style={{ color: "#ccc" }}>Đánh giá</span>
             </div>
             <div className="product-detail-content-right-sold col-4">
-              67,4k <span style={{ color: "#ccc" }}>Đã bán</span>
+              {productDetails && productDetails.sold} <span style={{ color: "#ccc" }}>Đã bán</span>
             </div>
           </div>
           <div className="product-detail-content-right-price">

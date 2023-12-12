@@ -2,4 +2,14 @@
     min-height: 88vh;
     background-color: #eaeaea;
     padding-bottom: 3rem;
+    .product-detail-page-container-nav{
+        font-weight: 600;
+        span{
+            transition: all 0.3s;
+            &:hover{
+                color: #29ADB2;
+                cursor: pointer;
+            }
+        }
+    }
 }
