@@ -6,16 +6,9 @@ function Card(props) {
   const navigate = useNavigate();
   // navigate(`/product-detail/${name.toLowerCase().replace(/\s/g, "-")}`, { state: name });
   const handleRedirectDetailPage = () => {
-    navigate(
-      `/product/product-detail/${props.name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\s/g, "-")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/đ/g, "d")
-        .replace(/Đ/g, "D")}`,
-      { state: props.name }
-    );
+    navigate(`/product/product-detail/${props.name.toLowerCase().replace(/\s/g, "-")}`, {
+      state: props.name,
+    });
   };
   const renderStar = (rating) => {
     let stars = [];

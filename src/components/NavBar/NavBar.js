@@ -7,7 +7,6 @@ function NavBar(props) {
   let navigate = useNavigate();
 
   const handleRedirect = (type) => {
-    console.log(type);
     navigate(`/product/type-product/${type.toLowerCase().replace(/\s/g, "-")}`, { state: type });
   };
   let [arrType, setArrType] = useState([]);

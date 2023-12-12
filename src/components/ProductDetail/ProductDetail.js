@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useQuery } from "@tanstack/react-query";
 
 import LoadingPage from "../LoadingPage/LoadingPage";
 import changeProduct from "../../assets/images/Free-ship/change-product.png";
@@ -18,26 +17,30 @@ function ProductDetail(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  let params = useParams();
 
   const user = useSelector((state) => state.user);
   const order = useSelector((state) => state.order);
   let [amountProduct, setAmountProduct] = useState(1);
   let [errorListOrder, setErrorLimitOrder] = useState(false);
-  // let [isLoading, setIsLoading] = useState(false);
+  let [productDetails, setProductDetails] = useState({});
+  let [isLoading, setIsLoading] = useState(false);
   const getDetailProduct = async () => {
     if (props.productName !== null) {
       const res = await ProductService.getDetailProduct(props.productName);
-      // setIsLoading(true);
+      console.log("props.productName", props.productName);
+      setIsLoading(true);
       if (res && res.status === "OK") {
-        return res.data;
+        setProductDetails(res.data);
       }
     } else {
-      const productNameReverse = location.pathname.split("/");
-      const lastSegment = productNameReverse[productNameReverse?.length - 1];
-      const reverseName1 = lastSegment.replace(/-/g, " ");
-
-      const res = await ProductService.getDetailProduct(reverseName1);
-      return res.data;
+      const productNameReverse = params.name;
+      const lastSegment = productNameReverse.split("-").join(" ");
+      const res = await ProductService.getDetailProduct(lastSegment);
+      console.log("res", lastSegment, res);
+      if (res && res.status === "OK") {
+        setProductDetails(res.data);
+      }
     }
   };
 
@@ -93,10 +96,10 @@ function ProductDetail(props) {
     }
   };
   //useQuery
-  let queryDetailProduct = useQuery(["product-details", props.productName], getDetailProduct, {
-    enabled: !!props.productName,
-  });
-  const { data: productDetails, isLoading } = queryDetailProduct;
+  // let queryDetailProduct = useQuery(["product-details", props.productName], getDetailProduct, {
+  //   enabled: !!props.productName,
+  // });
+  // const { data: productDetails, isLoading } = queryDetailProduct;
   //useEffect
   useEffect(() => {
     const orderRedux = order?.orderItems?.find((item) => item?.name === productDetails?.name);
@@ -117,15 +120,23 @@ function ProductDetail(props) {
       };
     }
   }, [order.isSuccessOrder, errorListOrder]);
-
+  useEffect(() => {
+    getDetailProduct();
+    if (productDetails && productDetails.length > 0) {
+      setIsLoading(false);
+    }
+  }, []);
   useEffect(() => {
     if (user) {
-      queryDetailProduct.refetch();
+      getDetailProduct();
+      if (productDetails && productDetails.length > 0) {
+        setIsLoading(false);
+      }
     }
   }, [user]);
   return (
     <div className="product-detail-container">
-      {isLoading === true && <LoadingPage />}
+      {/* {isLoading === true && <LoadingPage />} */}
       <div className="product-detail-content row">
         <div className="product-detail-content-left text-center col-4">
           <div

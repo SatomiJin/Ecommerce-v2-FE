@@ -3,10 +3,10 @@
     padding-bottom: 3rem;
     .container {
         .card-container {
-            justify-content: space-between;
+            justify-content: center;
             display: flex;
             flex-wrap: wrap;
-            // gap: 1rem;
+            gap: 1rem;
         }
 
         .home-page-button-load-more {
