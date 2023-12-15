@@ -7,7 +7,7 @@ function CommentPlugin(props) {
       <div id="fb-root"></div>
       <div
         className="fb-comments"
-        data-width="1200"
+        data-width="1000"
         data-href={href ? url : "https://shop.satomijin.id.vn/"}
         data-numposts="10"
         // style={{ background: "red" }}
