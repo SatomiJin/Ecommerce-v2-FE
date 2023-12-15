@@ -4,6 +4,7 @@ function CommentPlugin(props) {
   let url = `${process.env.REACT_APP_URL}${href}`;
   return (
     <div className="comment-container">
+      <div id="fb-root"></div>
       <div
         className="fb-comments"
         data-width="1200"
