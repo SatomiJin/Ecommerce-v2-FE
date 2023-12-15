@@ -5,8 +5,10 @@ import Loading from "../../components/Loading/Loading";
 import NavBar from "../../components/NavBar/NavBar";
 import Sliders from "../../components/Sliders/Sliders";
 import * as ProductService from "../../service/ProductService";
+import * as utils from "../../utils";
 import { useQuery } from "@tanstack/react-query";
 import "./HomePage.scss";
+import LikeShareButton from "../../components/PluginSoccial/LikeShareButton";
 function HomePage() {
   // const searchProduct = useSelector((state) => state.product.search);
   // const searchDebounce = useDebounce(searchProduct, 500);
@@ -34,6 +36,7 @@ function HomePage() {
   //useEffect
   useEffect(() => {
     getAllTypeProduct();
+    utils.initFacebookSDK();
   }, []);
   return (
     <div className="home-page-container">
