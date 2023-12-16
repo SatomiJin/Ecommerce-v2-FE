@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
+User-agent: Googlebot
+Disallow: https://shop.satomijin.id.vn/
+
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://shop.satomijin.id.vn/sitemap.xml 
