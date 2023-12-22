@@ -70,18 +70,18 @@ function AdminOrder() {
 
         <div className="admin-order-body">
           <div className="admin-order-table container">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Tên khách hàng</th>
-                  <th scope="col">Trạng thái đơn hàng</th>
-                  <th scope="col">Thanh toán</th>
-                  <th scope="col">Ngày đặt</th>
-                  <th scope="col">Thao tác đơn hàng</th>
-                </tr>
-              </thead>
-              <Loading isLoading={updateList}>
+            <Loading isLoading={updateList}>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên khách hàng</th>
+                    <th scope="col">Trạng thái đơn hàng</th>
+                    <th scope="col">Thanh toán</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col">Thao tác đơn hàng</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {listOrder &&
                     listOrder?.length > 0 &&
@@ -115,8 +115,8 @@ function AdminOrder() {
                       );
                     })}
                 </tbody>
-              </Loading>
-            </table>
+              </table>
+            </Loading>
           </div>
         </div>
       </div>
