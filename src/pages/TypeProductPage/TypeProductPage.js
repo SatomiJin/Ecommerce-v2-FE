@@ -6,14 +6,13 @@ import Card from "../../components/Card/Card";
 import * as ProductService from "../../service/ProductService";
 import "./TypeProductPage.scss";
 import { useLocation, useParams } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import Paginate from "../../components/Paginate/Paginate.js";
 function TypeProductPage() {
   const [typeProduct, setTypeProduct] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
   let [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
 
   let location = useLocation();
   let params = useParams();
@@ -62,30 +61,47 @@ function TypeProductPage() {
       <div className="title">Danh sách sản phẩm</div>
       <div className="type-product-body">
         <Loading isLoading={isLoading}>
-          <div className="type-product-body-content container">
-            {products &&
-              products?.length > 0 &&
-              products.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((item, index) => {
-                return (
-                  <Card
-                    key={index}
-                    id={item.id}
-                    countInStock={item.countInStock}
-                    description={item.description}
-                    image={item.image}
-                    name={item.name}
-                    price={item.price}
-                    rating={item.rating}
-                    type={item.type}
-                    sold={item.sold}
-                    discount={item.discount}
-                  />
-                );
-              })}
+          <div className="type-product-body-content just container">
+            {products && products?.length > 0 && products.length < itemsPerPage
+              ? products.map((item, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      id={item.id}
+                      countInStock={item.countInStock}
+                      description={item.description}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      rating={item.rating}
+                      type={item.type}
+                      sold={item.sold}
+                      discount={item.discount}
+                    />
+                  );
+                })
+              : products.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((item, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      id={item.id}
+                      countInStock={item.countInStock}
+                      description={item.description}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      rating={item.rating}
+                      type={item.type}
+                      sold={item.sold}
+                      discount={item.discount}
+                    />
+                  );
+                })}
           </div>
         </Loading>
       </div>
       <div className="type-product-paginate">
+        {console.log("product", products)}
         {products?.length > itemsPerPage && (
           <Paginate products={products} itemsPerPage={itemsPerPage} handlePageChange={handlePageChange} />
         )}
