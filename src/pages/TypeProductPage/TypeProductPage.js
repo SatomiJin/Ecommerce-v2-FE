@@ -61,7 +61,7 @@ function TypeProductPage() {
       <div className="title">Danh sách sản phẩm</div>
       <div className="type-product-body">
         <Loading isLoading={isLoading}>
-          <div className="type-product-body-content just container">
+          <div className="type-product-body-content justify-content-center container">
             {products && products?.length > 0 && products.length < itemsPerPage
               ? products.map((item, index) => {
                   return (
